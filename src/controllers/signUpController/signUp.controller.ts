@@ -2,12 +2,12 @@ import { Request, Response } from "express";
 
 import bcrypt from "bcrypt";
 
-import { credentials } from "../../types/credentials/credentials";
+import { credentialsType } from "../../types/credentials/credentialsType";
 
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-const signUp = async(req: Request<{}, {}, credentials>, res: Response) => {
+const signUp = async(req: Request<{}, {}, credentialsType>, res: Response) => {
 
     const {email, password} = req.body;
 

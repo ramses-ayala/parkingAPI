@@ -1,6 +1,9 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 
+
+//import { createParkingType } from "../../types/createParking/createParkingType";
+
 const prisma = new PrismaClient();
 
 const createParking = async(req: Request, res: Response) => {

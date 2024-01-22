@@ -2,8 +2,9 @@ import { Request, Response } from "express";
 import Joi from "joi";
 
 import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import { updateParkingInfoType } from "../../types/updateParking/updateParkingInfoType";
 
+const prisma = new PrismaClient();
 const schema = Joi.object({
     id: Joi.string()
         .min(36)
@@ -19,7 +20,7 @@ const schema = Joi.object({
         .max(1500)
 });
 
-const updateParkingInfo = async(req: Request, res: Response) => {
+const updateParkingInfo = async(req: Request<{}, {}, updateParkingInfoType>, res: Response) => {
 
     const { id, contact, spots } = req.body;
 
