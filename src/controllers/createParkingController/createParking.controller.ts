@@ -35,7 +35,7 @@ const createParking = async(req: Request, res: Response) => {
             }
         });
         
-        res.status(200).json({"msg": "parking registered !!!", parkingCreated});
+        res.status(200).json({"msg": "parking registered !!!", "data": parkingCreated});
 
     } catch (error) {
         console.error('error: ', error);
