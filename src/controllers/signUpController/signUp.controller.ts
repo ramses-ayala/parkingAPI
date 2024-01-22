@@ -12,6 +12,7 @@ const signUp = async(req: Request<{}, {}, credentials>, res: Response) => {
     const {email, password} = req.body;
 
     try {
+
         const userFound = await prisma.users.findUnique({
             where: {
                 email
@@ -19,7 +20,10 @@ const signUp = async(req: Request<{}, {}, credentials>, res: Response) => {
         });
 
         if(userFound){
-            return res.status(200).json({'msg': 'That email is already registered !!!'});
+            return res.status(409).json({
+                "Error": "Conflict",
+                "msg": "That email is already registered !!!"
+            });
         }
 
         const encryptedPassword = bcrypt.hashSync(password, 10);
@@ -33,7 +37,7 @@ const signUp = async(req: Request<{}, {}, credentials>, res: Response) => {
             data: userData,
         });
 
-        res.status(200).json({"data": "user registered"});
+        res.status(200).json({"msg": "user registered"});
 
     } catch (error) {
         console.error("Occurs an error signing up the user : ", error);

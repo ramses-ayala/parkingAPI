@@ -1,8 +1,5 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-  provider = "postgresql"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -10,9 +7,35 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users{
-  id          Int @id @default(autoincrement())
-  email       String @unique
-  password    String
+/// We could not retrieve columns for the underlying table. Either it has none or you are missing rights to see them. Please check your privileges.
+
+enum parkingTypes {
+  public
+  private
+  courtesy
 }
+
+enum userTypes {
+  corporate
+  provider
+  visitor
+}
+
+model Users {
+  id    Int @id   @default(autoincrement())
+  email   String @unique
+  password String
+  user    userTypes? @default(provider)
+}
+
+model Parkings {
+  id String @id @default(uuid())
+  name    String @unique
+  contact String
+  spots   Int
+  createdAt DateTime  @default(now())
+  parking parkingTypes?   @default(public)
+}
+
+/// We could not retrieve columns for the underlying table. Either it has none or you are missing rights to see them. Please check your privileges.
 
