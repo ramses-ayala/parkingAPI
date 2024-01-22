@@ -14,12 +14,6 @@ const updateParkingInfo = async(req: Request, res: Response) => {
                 id
             }
         });
-
-        console.log("id: ",id);
-        console.log("contact: ", contact);
-        console.log("spots: ", spots);
-        
-        console.log('parkingFound: ', parkingFound);
         
         if(!parkingFound) return res.status(404).json({"msg": "Parking not found !!!"});
 
