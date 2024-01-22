@@ -10,8 +10,9 @@ import { updateParkingInfo } from "./controllers/updateParkingInfo/updateParking
 routes.use(routesSignUp);
 routes.use(routesSignIn);
 routes.use(routesCreateParking);
-routes.use(updateParkingInfo);
 routes.use(routesCheckIn);
+routes.use(updateParkingInfo);
+
 
 
 export {routes};

@@ -5,6 +5,7 @@ import { PrismaClient } from "@prisma/client";
 import { updateParkingInfoType } from "../../types/updateParking/updateParkingInfoType";
 
 const prisma = new PrismaClient();
+
 const schema = Joi.object({
     id: Joi.string()
         .min(36)
