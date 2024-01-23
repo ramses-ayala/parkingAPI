@@ -25,7 +25,7 @@ model Users {
   id    Int @id   @default(autoincrement())
   email   String @unique
   password String
-  user    userTypes? @default(provider)
+  user    userTypes @default(provider)
 }
 
 model Parkings {
@@ -34,7 +34,7 @@ model Parkings {
   contact String
   spots   Int
   createdAt DateTime  @default(now())
-  parking parkingTypes?   @default(public)
+  parking parkingTypes   @default(public)
 }
 
 /// We could not retrieve columns for the underlying table. Either it has none or you are missing rights to see them. Please check your privileges.
