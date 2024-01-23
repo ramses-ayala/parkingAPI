@@ -36,7 +36,7 @@ const updateParkingInfo = async(req: Request<{}, {}, updateParkingInfoType>, res
         const { error } = schema.validate({id, contact, spots});
 
         if(error !== undefined){
-            return res.status(500).json({"msg": error.details[0].message});
+            return res.status(422).json({"msg": error.details[0].message});
         }
 
         if(!parkingFound) return res.status(404).json({"msg": "Parking not found !!!"});
