@@ -2,7 +2,7 @@ import { Router } from "express";
 
 const routesParking = Router();
 
-import { tokenValidator } from "../../utils/tokenValidator";
+import { tokenValidator } from "../../utils/jwt/tokenValidator";
 
 import { getParkings } from "../../controllers/getParkingsController/getParkings.controller";
 

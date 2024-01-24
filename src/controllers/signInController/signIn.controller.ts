@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 
 import bcrypt from 'bcrypt';
 
-import { generateToken } from '../../utils/generateToken';
+import { generateToken } from '../../utils/jwt/generateToken';
 
 
 import { PrismaClient } from '@prisma/client';
