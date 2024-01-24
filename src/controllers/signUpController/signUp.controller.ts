@@ -20,7 +20,7 @@ const schema = Joi.object({
 
 const signUp = async(req: Request<{}, {}, credentialsType>, res: Response) => {
 
-    const {email, password} = req.body;
+    const { email, password } = req.body;
 
     try {
 
