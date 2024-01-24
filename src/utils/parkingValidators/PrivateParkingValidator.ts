@@ -1,6 +1,9 @@
+//import { userTypes } from "../../enums/userTypes";
+
 class PrivateParkingValidator{
-    /* validate(userType: string, dayOfWeek: string){
-        if(userType === 'corporate' && this.isWeekday(dayOfWeek)){
+
+    validate(userType: number, dayOfWeek: string){
+        if(userType === 0 && this.isWeekday(dayOfWeek)){
             return {"success": true};
         }else{
             return {"success": false, "errorCode": "INVALID_USER_TYPE", "message": "Cannot step into this private parking !!!"};
@@ -8,8 +11,12 @@ class PrivateParkingValidator{
     }
 
     isWeekday(dayOfWeek: string){
-        // implementar logica aqui
-    } */
+
+        if(dayOfWeek !== 'Saturday' && dayOfWeek !== 'Sunday'){
+            return true;
+        }
+        return false;
+    }
 }
 
 export {PrivateParkingValidator};
