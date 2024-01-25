@@ -9,8 +9,6 @@ const getParkings = async(req: Request<{}, {}, getParkingsTypes>, res: Response)
 
     let {skip = '0', take = '10', orderBy = 'createdAt', orderDirection = 'asc'} = req.query;
 
-    console.log('req.query : ', req.query);
-
     orderBy = orderBy.toString();
 
     try {

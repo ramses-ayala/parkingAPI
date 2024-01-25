@@ -1,22 +1,12 @@
 import { Request, Response } from "express";
-import Joi from "joi";
-
 import bcrypt from "bcrypt";
 
 import { credentialsType } from "../../types/credentials/credentialsType";
+import { signUpSchemaValidation } from "../../utils/schemaValidations/signUpSchemaValidation";
 
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-const schema = Joi.object({
-    email: Joi.string()
-        .email()
-        .required(),
-    
-    password: Joi.string()
-        .regex(new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%*])[A-Za-z\d!@#$%*]{8,}$/))
-        .required()
-});
 
 const signUp = async(req: Request<{}, {}, credentialsType>, res: Response) => {
 
@@ -30,7 +20,7 @@ const signUp = async(req: Request<{}, {}, credentialsType>, res: Response) => {
             }
         });
 
-        let { error } = schema.validate({email, password});
+        let { error } = signUpSchemaValidation.validate({email, password});
 
         if(error !== undefined){
             return res.status(422).json({
