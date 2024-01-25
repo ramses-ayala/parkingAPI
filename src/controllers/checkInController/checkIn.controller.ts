@@ -33,17 +33,17 @@ const checkIn = async (req: Request, res: Response) => {
         const parkingValidator = ParkingValidatorFactory.createValidator(parkingType);
         
         
-        let typeee = 0;
+        let userTypeIndex = 0;
 
         if(userType ===  'visitor'){
-            typeee = userTypes.visitor;
+            userTypeIndex = userTypes.visitor;
         }
 
         if(userType === 'provider'){
-            typeee = userTypes.provider;
+            userTypeIndex = userTypes.provider;
         }
 
-        const result = parkingValidator.validate(typeee, dayOfWeek);
+        const result = parkingValidator.validate(userTypeIndex, dayOfWeek);
         
         res.status(200).json({"result": result});
         
